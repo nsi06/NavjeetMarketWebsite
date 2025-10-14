@@ -69,7 +69,7 @@ const OrderItemEntity = new EntitySchema({
 
 // Function to ensure the target database exists; if not, create it.
 async function ensureDatabaseExists() {
-  const targetDB = process.env.DB_NAME || "mikes_macaroon_market";
+  const targetDB = process.env.DB_NAME || "navjeet_macaroon_market";
   const dbConfig = {
     host: process.env.DB_HOST || "localhost",
     port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
@@ -164,7 +164,7 @@ const AppDataSource = new DataSource({
   ssl: (process.env.DB_HOST && process.env.DB_HOST != 'localhost') ? { ca: fs.readFileSync('global-bundle.pem').toString() } : false,
   username: process.env.DB_USER || "postgres",
   password: process.env.DB_PASS || "postgres",
-  database: process.env.DB_NAME || "mikes_macaroon_market",
+  database: process.env.DB_NAME || "navjeet_macaroon_market",
   synchronize: true, // Automatically syncs the schema (not recommended for production)
   logging: false,
   entities: [ProductEntity, OrderEntity, OrderItemEntity]
@@ -236,7 +236,7 @@ app.get("/", (req, res) => {
       ">
         <div class="d-flex h-100 align-items-center justify-content-center">
           <div class="text-center text-white">
-            <h1 class="display-3">Welcome to Mike's Macaroon Market!</h1>
+            <h1 class="display-3">Welcome to Navjeet's Macaroon Market!</h1>
             <p class="lead">Delicious macaroons made with love.</p>
             <a class="btn btn-primary btn-lg" href="/products" role="button">View Our Products</a>
           </div>
@@ -244,7 +244,7 @@ app.get("/", (req, res) => {
       </div>
     </div>
   `;
-  res.send(renderPage("Mike's Macaroon Market", content));
+  res.send(renderPage("Navjeet's Macaroon Market", content));
 });
 
 // Products route: List available products from the database with images.
@@ -341,7 +341,7 @@ app.get("/products", async (req, res) => {
         document.addEventListener('DOMContentLoaded', updateCartCount);
       </script>
     `;
-    res.send(renderPage("Products - Mike's Macaroon Market", html));
+    res.send(renderPage("Products - Navjeet's Macaroon Market", html));
   } catch (error) {
     console.error("Error fetching products:", error);
     res.status(500).send("Error fetching products");
@@ -375,7 +375,7 @@ app.get("/cart", (req, res) => {
       document.addEventListener('DOMContentLoaded', renderCart);
     </script>
   `;
-  res.send(renderPage("Your Cart - Mike's Macaroon Market", content));
+  res.send(renderPage("Your Cart - Navjeet's Macaroon Market", content));
 });
 
 // Checkout page: Show order form and populate cart details from sessionStorage.
@@ -430,7 +430,7 @@ app.get("/checkout", (req, res) => {
       document.addEventListener('DOMContentLoaded', renderCartSummary);
     </script>
   `;
-  res.send(renderPage("Checkout - Mike's Macaroon Market", content));
+  res.send(renderPage("Checkout - Navjeet's Macaroon Market", content));
 });
 
 // Process checkout: Save the order and order items to the database using submitted cart data.
@@ -471,7 +471,7 @@ app.post("/checkout", async (req, res) => {
         clearCart();
       </script>
     `;
-    res.send(renderPage("Order Confirmation - Mike's Macaroon Market", content));
+    res.send(renderPage("Order Confirmation - Navjeet's Macaroon Market", content));
   } catch (error) {
     console.error("Error processing order:", error);
     res.status(500).send("Error processing order");

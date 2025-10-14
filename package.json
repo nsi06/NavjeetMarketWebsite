@@ -1,7 +1,7 @@
 {
-  "name": "mikes-macaroon-market",
+  "name": "navjeet-macaroon-market",
   "version": "1.0.0",
-  "description": "Mike's Macaroon Market",
+  "description": "Navjeet's Macaroon Market",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
